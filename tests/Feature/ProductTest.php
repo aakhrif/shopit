@@ -48,4 +48,11 @@ class ProductTest extends TestCase
                 'name' => $product->name,
             ]);
     }
+
+    public function test_product_creation()
+    {
+        $data = ['name' => 'Test', 'price' => 9.99];
+        $this->postJson('/api/products', $data)
+            ->assertStatus(201);
+    }
 }

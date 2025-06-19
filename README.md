@@ -10,7 +10,7 @@ Use case Shopsystem
 
 ## bash
 
-git clone <repo-url>
+git clone https://github.com/aakhrif/shopit.git
 composer install
 cp .env.example .env
 
@@ -19,5 +19,16 @@ php artisan serve
 
 ## test
 php artisan test
+
+### Integrationstest  (HTTP-Request → Routing → Controller → Model → DB)
+(Linux)
+curl -X POST http://localhost:8000/api/products \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Test", "price": 9.99}'
+
+(Windows)
+curl.exe -X POST http://localhost:8000/api/products \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Test", "price": 9.99}'
 
 
