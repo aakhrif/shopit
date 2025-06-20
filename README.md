@@ -21,14 +21,25 @@ php artisan serve
 php artisan test
 
 ### Integrationstest  (HTTP-Request → Routing → Controller → Model → DB)
-(Linux)
-curl -X POST http://localhost:8000/api/products \
-     -H "Content-Type: application/json" \
-     -d '{"name":"Test", "price": 9.99}'
 
-(Windows)
-curl.exe -X POST http://localhost:8000/api/products \
-     -H "Content-Type: application/json" \
-     -d '{"name":"Test", "price": 9.99}'
+
+curl -Uri "http://localhost:8000/api/products" `
+    -Method POST `
+    -Headers @{"Content-Type"="application/json"} `
+    -Body '{"name":"Test", "price": 9.99}' `
+    -Verbose
+
+
+curl -Uri "http://localhost:8000/api/test-image-validation" `
+    -Method POST `
+    -Headers @{"Content-Type"="application/json"} `
+    -Body '{"name":"Test"}' `
+    -Verbose
+
+curl -Uri "http://localhost:8000/api/products" `
+     -Method POST `
+     -Headers @{"Content-Type"="application/json"} `
+     -Body '{"name":"Test", "price": 9.99, "image": "product2.jpg", "sizes": ["S","M","L"], "description": "nicest shirts"}' `
+     -Verbose
 
 

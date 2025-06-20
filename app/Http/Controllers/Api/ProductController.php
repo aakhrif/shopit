@@ -27,7 +27,10 @@
                 $data = $request->validate([
                     'name' => 'required|string|max:255',
                     'price' => 'required|numeric|min:0',
-                    'image' => 'required|string|max:255'
+                    'image' => 'required|string|max:255',
+                    'sizes' => 'nullable|array',
+                    'sizes.*' => 'string|in:S,M,L,XL,XXL', // ← Jeder Array-Eintrag muss string sein
+                    'description' => 'nullable|string'
                 ]);
             } catch (\Exception $e) { // Fängt ALLE Exceptions ab
                 \Log::error("Validierungsfehler: " . $e->getMessage());
